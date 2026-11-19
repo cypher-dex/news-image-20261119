@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thursday 19 November 2026 — The World Atlas</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1024px; height: 1024px; overflow: hidden; }
+  body { color: #14243a; background: #f6f2e8; font-family: Arial, Helvetica, sans-serif; }
+  .mast { height: 87px; padding: 12px 25px 11px; display: flex; align-items: end; justify-content: space-between; border-bottom: 5px double #1a2a40; }
+  .brand { font: bold 44px/1 Georgia,serif; letter-spacing: -2px; }
+  .mast-right { text-align: right; }
+  .eyebrow { color: #b23f34; font: bold 11px/1.5 Arial,sans-serif; letter-spacing: 2.4px; text-transform: uppercase; }
+  .date { font: bold 29px/1.1 Georgia,serif; }
+  .rule { height: 24px; background: #172b40; color: #fffaf1; display: flex; justify-content: space-between; align-items: center; padding: 0 25px; font-size: 11px; font-weight: bold; letter-spacing: 1.1px; }
+  .rule strong { color: #f3bb79; }
+  .heroes { margin: 13px 24px 0; display: grid; grid-template-columns: 2.2fr 1fr 1fr; gap: 10px; height: 273px; }
+  .hero { border: 1px solid #c9c4b8; background: #fffcf5; display: flex; flex-direction: column; overflow: hidden; }
+  .hero img { width: 100%; object-fit: cover; display: block; }
+  .hero.primary img { height: 149px; object-position: center 48%; }
+  .hero:not(.primary) img { height: 132px; }
+  .hero .text { padding: 7px 10px; }
+  .hero.primary .text { padding: 8px 12px; }
+  .hero .tag { color: #b23f34; font-size: 10px; font-weight: bold; letter-spacing: 1.2px; text-transform: uppercase; }
+  .hero h1, .hero h2 { font-family: Georgia,serif; letter-spacing: -.5px; margin: 2px 0 4px; }
+  .hero h1 { font-size: 26px; line-height: 1.02; }
+  .hero h2 { font-size: 18px; line-height: 1.04; }
+  .hero p { color: #40484d; font-size: 11px; line-height: 1.22; margin: 0; }
+  .hero figcaption { position: absolute; right: 1px; bottom: 1px; padding: 2px 4px; background: #172b40; color: #fff; font: bold 8px/1 Arial; letter-spacing: .2px; }
+  .hero figure { position: relative; margin: 0; flex: none; }
+  .middle { margin: 11px 24px 0; height: 183px; display: grid; grid-template-columns: 1.45fr 1fr 1fr; gap: 10px; }
+  .map-card, .snapshot, .clock-card { border-top: 3px solid #172b40; background: #ebe8dd; padding: 6px 10px; overflow: hidden; }
+  .card-heading { font-size: 10px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; }
+  .map-card svg { margin-top: 4px; width: 100%; height: 140px; display: block; background: #e1e9e9; }
+  .map-caption { font-size: 9px; color: #40484d; text-align: right; margin-top: 2px; }
+  .snapshot { background: #f0e0cd; }
+  .snapshot .metric { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #cbbbaa; }
+  .snapshot .metric:last-child { border-bottom: 0; }
+  .metric b { color: #9e382d; font: bold 22px/1 Georgia,serif; flex: none; width: 74px; }
+  .metric span { font-size: 11px; line-height: 1.16; }
+  .clock-card { background: #e3e5e4; }
+  .clock-card .label { color: #a53830; font-size: 11px; font-weight: 800; margin: 9px 0 3px; }
+  .clock-card .line { font-size: 15px; line-height: 1.2; font-weight: 700; }
+  .clock-card .note { font-size: 11px; line-height: 1.25; margin-top: 7px; }
+  .section-head { margin: 13px 24px 6px; display: flex; align-items: baseline; justify-content: space-between; border-bottom: 3px solid #172b40; padding-bottom: 3px; }
+  .section-head b { font: bold 17px Georgia,serif; }
+  .section-head span { font-size: 10px; color: #60646b; }
+  .regions { margin: 0 18px; display: grid; grid-template-columns: repeat(4, 1fr); height: 297px; }
+  .region { border-right: 1px solid #b8b5ab; padding: 0 9px; }
+  .region:last-child { border-right: 0; }
+  .region h3 { margin: 0 0 7px; padding: 4px 6px; color: #fff; font-size: 12px; letter-spacing: 1.1px; background: var(--accent); }
+  .story { display: grid; grid-template-columns: 23px 1fr; gap: 5px; margin: 0 0 8px; }
+  .story .pin { width: 21px; height: 21px; background: var(--accent); color: white; border-radius: 50%; text-align: center; font-size: 10px; font-weight: 800; line-height: 21px; }
+  .story b { display: block; font-size: 13.5px; line-height: 1.14; }
+  .story small { display: block; font-size: 11px; line-height: 1.18; color: #45505a; margin-top: 2px; }
+  .context { margin: 0 24px; padding: 6px 10px; min-height: 42px; background: #eae1d5; color: #444b51; font-size: 10px; line-height: 1.33; border-left: 4px solid #b79268; }
+  .context b { color: #7b4436; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 25px; padding: 5px 24px; background: #172b40; color: #fff; font-size: 10px; letter-spacing: .1px; }
+  .foot b { color: #f2c57c; }
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="brand">The World Atlas</div>
+  <div class="mast-right"><div class="eyebrow">An illustrated world-news edition</div><div class="date">Thursday, 19 November 2026</div></div>
+</header>
+<div class="rule"><span>SHENZHEN · CRIMEA · RIYADH · SYDNEY · FRANKFURT · BERLIN</span><span>AS REPORTED BY <strong>04:45 UTC</strong> · NOV 19</span></div>
+<section class="heroes">
+  <article class="hero primary"><figure><img src="assets/summit.webp" alt="Conceptual illustration of three delegates at a summit table"><figcaption>EDITORIAL ILLUSTRATION</figcaption></figure><div class="text"><div class="tag">01 · Asia / APEC final day, Shenzhen</div><h1>Trump meets Putin at APEC<br>before three-way talks with Xi</h1><p>Trump cites a “great relationship” with Putin on the sidelines. Trump–Xi talks, then the leaders’ first trilateral, are set for this afternoon — no outcome yet.</p></div></article>
+  <article class="hero"><figure><img src="assets/game.webp" alt="Neon waterfront and game controller illustration"><figcaption>EDITORIAL ILLUSTRATION</figcaption></figure><div class="text"><div class="tag">02 · Culture / global</div><h2>GTA VI starts worldwide rollout</h2><p>Midnight launch began in New Zealand, 13 years after GTA V; Sensor Tower estimates over 17m copies sold.</p></div></article>
+  <article class="hero"><figure><img src="assets/bridge.webp" alt="Conceptual engraved illustration of a damaged bridge"><figcaption>EDITORIAL ILLUSTRATION</figcaption></figure><div class="text"><div class="tag">03 · Europe / Ukraine war</div><h2>Third strike halts Crimea bridge</h2><p>Russian-installed governor says traffic is suspended after the week’s third attack.</p></div></article>
+</section>
+<section class="middle">
+  <div class="map-card"><div class="card-heading">Where the news is happening</div><svg id="map" viewBox="0 0 420 140" aria-label="Map pinning selected lead and regional stories"></svg><div class="map-caption">Selected numbers locate the stories on this page</div></div>
+  <div class="snapshot"><div class="card-heading">The day in numbers</div><div class="metric"><b>99</b><span>GTA VI’s Metacritic score, matched only by Zelda: Ocarina of Time</span></div><div class="metric"><b>€1.3tn</b><span>assets of a combined UniCredit–Commerzbank</span></div><div class="metric"><b>64</b><span>children killed in Yemen since 3 Sept, UNICEF says</span></div><div class="metric"><b>5</b><span>Saudi emergency alerts issued within five hours</span></div></div>
+  <div class="clock-card"><div class="card-heading">Not yet a result</div><div class="label">LATER ON THURSDAY</div><div class="line">Trump–Xi talks, then the first Trump–Xi–Putin meeting, in Shenzhen.</div><div class="note">Also pending: an APEC joint statement, Anthropic’s Nasdaq debut and previews 10–11. No outcome is reported here as fact.</div></div>
+</section>
+<div class="section-head"><b>Beyond the lead stories</b><span>19 NOV developments and first reports · sources in README</span></div>
+<section class="regions" id="regions"></section>
+<div class="context"><b>CONTEXT FROM 18 NOV · NOT TODAY'S HEADLINES:</b> Anthropic priced a record $81.3bn IPO; Brazil's Senate passed Lula's fiscal package (lower house next); Hegseth said the US and Venezuela signed a deal restoring military ties; Israel launched a ground raid in central Gaza; Ethiopia and Eritrea massed forces on their border, sources said; Iraq ordered forces to replace Kataeb Hezbollah at Jurf al-Sakher.</div>
+<footer class="foot"><b>ONE DAY, FOUR DESKS.</b> Reported facts, labelled claims and pending meetings kept apart; illustrations are not photographs.</footer>
+<script>
+const regions = [
+  {name:'ASIA · PACIFIC', color:'#b4512a', stories:[
+    [4,'Xi pledges $20m for APEC', 'Also plans an APEC research centre in Shenzhen.', [114,22]],
+    [5,'Putin pitches Russian energy', 'Says Asia can “always count on Moscow”; Vietnam cites nuclear ties.', [114,22]],
+    [6,'Trump: no AI rules that “stifle”', 'Calls AI “almost completely good” but says the bad needs care.', [114,22]],
+    [7,'Japan–Russia talks disclosed', 'Tokyo: Takaichi met Putin, first leaders’ meeting since the 2022 invasion.', [139,36]],
+    [8,'No sign of Kim in Shenzhen', 'KCNA shows him at a South Hamgyong construction site instead.', [127,40]],
+  ]},
+  {name:'EUROPE · AFRICA', color:'#2565aa', stories:[
+    [9,'UniCredit–Germany accord', 'Commerzbank’s German HQ stays in Frankfurt; Berlin drops board-seat demand.', [9,50]],
+    [10,'Ukraine allies due in Berlin', 'About 20 leaders on security guarantees; Witkoff and Kushner expected.', [13,52]],
+    [11,'South Africa rate call due', 'Central bank’s final 2026 decision at 3pm; most expect a hold at 7.25%.', [28,-26]],
+  ]},
+  {name:'GULF · MIDDLE EAST', color:'#9d3732', stories:[
+    [12,'Houthi missile targets Riyadh', 'Saudi-led coalition says it dealt with the threat; falling debris caused damage.', [47,25]],
+    [13,'Coalition hits launch site', 'Says it destroyed a Houthi platform in Dhamar used against Riyadh.', [44,15]],
+    [14,'Trump alleges Iran arms push', 'Tells Fox Iran is “looking at gases, looking at bio”; offers no evidence.', [52,32]],
+    [15,'MBS meets CENTCOM chief', 'Saudi crown prince and US commander Brad Cooper discuss military ties, SPA says.', [47,25]],
+  ]},
+  {name:'MARKETS · WORLD', color:'#176b6a', stories:[
+    [16,'Japan stocks rise 1%', 'Nikkei gains after Anthropic’s IPO pricing; Asia ex-Japan index slips 0.3%.', [139,36]],
+    [17,'US futures rise', 'Nasdaq futures up 1%, S&P 0.6% before Anthropic’s Nasdaq debut.', [-74,41]],
+    [18,'Brent steady near $92', 'Surplus fears and higher rates offset Hormuz shipping attacks.', [54,26]],
+  ]}
+];
+document.getElementById('regions').innerHTML = regions.map(r => `<div class="region" style="--accent:${r.color}"><h3>${r.name}</h3>${r.stories.map(([n,h,d]) => `<div class="story"><span class="pin">${n}</span><div><b>${h}</b><small>${d}</small></div></div>`).join('')}</div>`).join('');
+const land = [
+  'M13 40 L30 23 70 18 95 28 108 44 85 53 76 72 60 86 38 73 23 56Z',
+  'M65 83 L93 77 111 91 104 113 86 135 72 123Z',
+  'M176 42 L198 31 224 29 250 38 261 48 245 58 222 57 203 70 190 63Z',
+  'M191 68 L229 65 245 85 230 122 204 130 187 109Z',
+  'M242 43 L276 24 342 22 399 35 407 53 370 65 355 78 320 79 301 64 277 67 259 57Z',
+  'M348 97 L376 94 396 114 386 131 357 125Z'
+];
+const svg=document.getElementById('map');
+svg.innerHTML = `<rect width="420" height="140" fill="#e1e9e9"/>${land.map(d=>`<path d="${d}" fill="#cecbbd" stroke="#b4b2a8" stroke-width="1"/>`).join('')}`;
+const pins = [[1,[114,22],'#b4512a'],[2,[151,-34],'#176b6a'],[3,[36,45],'#2565aa'],[7,[140,36],'#b4512a'],[8,[127,40],'#b4512a'],[9,[9,50],'#2565aa'],[11,[28,-26],'#2565aa'],[12,[47,25],'#9d3732'],[17,[-74,41],'#176b6a']];
+const project=([lon,lat])=>[Math.round((lon+180)*420/360),Math.round((83-lat)*140/150)];
+svg.innerHTML += pins.map(([n,coord,c])=>{const [x,y]=project(coord);return `<g><circle cx="${x}" cy="${y}" r="7" fill="${c}" stroke="#fff" stroke-width="1"/><text x="${x}" y="${y+2.5}" fill="#fff" font-family="Arial" font-size="7" font-weight="bold" text-anchor="middle">${n}</text></g>`}).join('');
+</script>
+</body>
+</html>
