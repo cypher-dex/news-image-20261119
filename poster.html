@@ -36,19 +36,20 @@
   .side p { margin-top: 4px; font-size: 15px; line-height: 1.3; color: var(--muted); }
   .side .kicker { margin-top: 8px; font-size: 13px; }
 
-  .lower { display: grid; grid-template-columns: 588px 1fr; gap: 24px; padding: 20px 28px 0; }
+  .lower { margin: 20px 28px 0; }
   .label { font-size: 14px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 3px solid var(--ink); }
-  .briefs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin-top: 10px; }
-  .brief .where { display: inline-block; padding: 2px 7px; background: var(--teal); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 1.4px; }
+  .briefs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px 18px; margin-top: 10px; }
+  .brief .where { display: inline-block; padding: 2px 7px; background: var(--teal); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 1.1px; }
   .brief h3 { margin-top: 5px; font-size: 21px; line-height: 1.12; }
   .brief p { margin-top: 3px; font-size: 14px; line-height: 1.28; color: var(--muted); }
+  .brief.weather .where, .brief.jobs .where { background: var(--red); }
+  .brief.weather h3, .brief.jobs h3 { color: #a73323; }
 
-  .pending { background: var(--amber); padding: 14px 16px; }
-  .pending .label { border-color: var(--ink); }
-  .pending h3 { margin-top: 10px; font: 700 24px/1.12 Georgia, serif; }
-  .pending ul { margin-top: 10px; padding-left: 18px; font-size: 16px; line-height: 1.45; }
+  .pending { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 8px 12px; background: var(--amber); }
+  .pending strong { flex: none; font-size: 13px; letter-spacing: 1.2px; }
+  .pending span { font-size: 15px; line-height: 1.25; }
 
-  .ticker { margin: 14px 28px 0; height: 36px; display: flex; align-items: center; border: 2px solid var(--red); background: #fff; }
+  .ticker { margin: 10px 28px 0; height: 36px; display: flex; align-items: center; border: 2px solid var(--red); background: #fff; }
   .ticker b { height: 100%; display: flex; align-items: center; padding: 0 12px; background: var(--red); color: #fff; font-size: 13px; letter-spacing: 1.8px; }
   .ticker span { padding: 0 14px; font-size: 16px; font-weight: 700; white-space: nowrap; }
 
@@ -88,24 +89,16 @@
 </section>
 
 <section class="lower">
-  <div>
-    <div class="label">Also on Thursday</div>
-    <div class="briefs">
-      <div class="brief"><span class="where">GULF</span><h3>Houthi missile aimed at Riyadh</h3><p>Coalition says it dealt with the threat; falling debris caused damage.</p></div>
-      <div class="brief"><span class="where">EUROPE</span><h3>UniCredit, Berlin agree Commerzbank terms</h3><p>German HQ stays in Frankfurt; Berlin drops board-seat demand.</p></div>
-      <div class="brief"><span class="where">ASIA</span><h3>Tokyo discloses Takaichi–Putin talks</h3><p>First leaders’ meeting since 2022, held after Wednesday’s banquet.</p></div>
-      <div class="brief"><span class="where">MARKETS</span><h3>Nikkei up 1%; Brent steady near $92</h3><p>US futures rise before Anthropic’s Nasdaq debut.</p></div>
-    </div>
+  <div class="label">Also on Thursday · 19 Nov reports</div>
+  <div class="briefs">
+    <article class="brief"><span class="where">GULF</span><h3>Houthi missile aimed at Riyadh</h3><p>Coalition says it dealt with the threat; debris caused damage.</p></article>
+    <article class="brief"><span class="where">EUROPE</span><h3>UniCredit–Berlin accord</h3><p>Commerzbank HQ stays in Frankfurt; Berlin drops board-seat demand.</p></article>
+    <article class="brief weather"><span class="where">INDIA · WEATHER</span><h3>Akvan over Bay of Bengal</h3><p>IMD: 90–100 km/h winds, gusts 110. Coastal crossing forecast for 20 Nov.</p></article>
+    <article class="brief"><span class="where">ASIA</span><h3>Tokyo confirms Putin talks</h3><p>Takaichi met Putin on Wednesday; first leaders’ meeting since 2022.</p></article>
+    <article class="brief"><span class="where">MARKETS</span><h3>Nikkei up 1%; Brent near $92</h3><p>US futures rise ahead of Anthropic’s Nasdaq debut.</p></article>
+    <article class="brief jobs"><span class="where">AUSTRALIA · JOBS</span><h3>Jobless rate rises to 4.9%</h3><p>October employment fell by 44,000, ABS reports.</p></article>
   </div>
-  <aside class="pending">
-    <div class="label">Later today · not yet happened</div>
-    <h3>Trump–Xi talks, then the first Trump–Xi–Putin meeting</h3>
-    <ul>
-      <li>Ukraine allies’ summit, Berlin</li>
-      <li>South Africa rate decision, 3pm SAST</li>
-      <li>Anthropic’s Nasdaq debut</li>
-    </ul>
-  </aside>
+  <aside class="pending"><strong>STILL AHEAD</strong><span>Trump–Xi, then first trilateral · Berlin Ukraine summit · South Africa rate call · Anthropic’s Nasdaq debut</span></aside>
 </section>
 
 <div class="ticker"><b>CHINA · HOST</b><span>Xi pledges US$20m for APEC cooperation and announces an APEC research centre in Shenzhen</span></div>
