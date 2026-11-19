@@ -26,12 +26,13 @@ while (at < png.length) {
   const type = png.toString('latin1', at + 4, at + 8);
   if (!/^[A-Za-z]{4}$/.test(type)) fail(`invalid chunk type at byte ${at}`);
   if (crc32(png.subarray(at + 4, end - 4)) !== png.readUInt32BE(end - 4)) fail(`CRC mismatch in ${type} chunk`);
+  if (types.length === 0 ? type !== 'IHDR' || length !== 13 : type === 'IHDR') fail('IHDR must be the single, first, 13-byte chunk');
+  if (type === 'IEND' && length !== 0) fail(`IEND must be empty, found ${length} data bytes`);
   types.push(type);
   at = end;
   if (type === 'IEND') break;
 }
 
-if (types[0] !== 'IHDR' || png.readUInt32BE(8) !== 13) fail('first chunk must be a 13-byte IHDR');
 if (types.at(-1) !== 'IEND' || at !== png.length) fail('file must end exactly with IEND');
 if (!types.includes('IDAT')) fail('no image data');
 const width = png.readUInt32BE(16);

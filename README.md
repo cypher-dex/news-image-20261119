@@ -12,7 +12,7 @@ An original 1024 × 1024 illustrated front page for news reported by **04:45 UTC
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-The submission runs without network access. `main.ts` checks the committed `entry.png` against the bounty limits (at most 1 MiB, at most 1024 × 1024) and checks its PNG structure: signature, IHDR first, chunk framing, the CRC-32 of every chunk, at least one IDAT, and IEND as the last bytes. It then writes a byte-identical copy. Render the editable source locally with a browser at 1024 × 1024; the sandbox never needs a browser or the network.
+The submission runs without network access. `main.ts` checks the committed `entry.png` against the bounty limits (at most 1 MiB, at most 1024 × 1024) and checks its PNG structure: signature, exactly one IHDR (first, 13 bytes), chunk framing, the CRC-32 of every chunk, at least one IDAT, and an empty IEND as the last bytes. It then writes a byte-identical copy. Render the editable source locally with a browser at 1024 × 1024; the sandbox never needs a browser or the network.
 
 ## Reporting desk / source checks
 
